@@ -1,0 +1,2315 @@
+{
+  "id": "aa77_decoded_fdr_nav_timeline",
+  "generatedAt": "2026-05-11T21:53:00.107Z",
+  "source": "Decoded FinalFlightCompleteWithMaxOneLine CSV columns for autopilot, autothrottle, flight-director, mode annunciations, altitude reporting, and VOR frequency changes.",
+  "mcpTargetCaveat": "Selected MCP target heading, altitude, airspeed, and vertical-speed values are not present in the loaded decoded FinalFlightCompleteWithMaxOneLine CSV fields.",
+  "fields": [
+    {
+      "id": "ap-hud",
+      "label": "A/P HUD flag",
+      "category": "mode"
+    },
+    {
+      "id": "ap-cmd",
+      "label": "A/P CMD",
+      "category": "mode"
+    },
+    {
+      "id": "ap-cws",
+      "label": "A/P CWS",
+      "category": "mode"
+    },
+    {
+      "id": "ap-warning",
+      "label": "A/P warning",
+      "category": "mode"
+    },
+    {
+      "id": "ap-caution",
+      "label": "A/P caution",
+      "category": "mode"
+    },
+    {
+      "id": "at-engaged",
+      "label": "A/T engaged",
+      "category": "mode"
+    },
+    {
+      "id": "at-disconnect",
+      "label": "A/T disconnect",
+      "category": "mode"
+    },
+    {
+      "id": "throttle-hold",
+      "label": "Throttle hold",
+      "category": "mode"
+    },
+    {
+      "id": "thrust-mode",
+      "label": "Thrust mode",
+      "category": "mode"
+    },
+    {
+      "id": "fd-capt",
+      "label": "FD captain",
+      "category": "mode"
+    },
+    {
+      "id": "fd-fo",
+      "label": "FD first officer",
+      "category": "mode"
+    },
+    {
+      "id": "vnav",
+      "label": "VNAV",
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode",
+      "label": "IAS mode",
+      "category": "mode"
+    },
+    {
+      "id": "mach-mode",
+      "label": "Mach mode",
+      "category": "mode"
+    },
+    {
+      "id": "alt-hold",
+      "label": "Alt hold",
+      "category": "mode"
+    },
+    {
+      "id": "flch",
+      "label": "FLCH",
+      "category": "mode"
+    },
+    {
+      "id": "vs-mode",
+      "label": "V/S mode",
+      "category": "mode"
+    },
+    {
+      "id": "gs-mode",
+      "label": "G/S mode",
+      "category": "mode"
+    },
+    {
+      "id": "takeoff-mode",
+      "label": "T/O mode",
+      "category": "mode"
+    },
+    {
+      "id": "rollout-mode",
+      "label": "Rollout",
+      "category": "mode"
+    },
+    {
+      "id": "ias-engaged",
+      "label": "IAS engaged",
+      "category": "mode"
+    },
+    {
+      "id": "mach-engaged",
+      "label": "Mach engaged",
+      "category": "mode"
+    },
+    {
+      "id": "alt-reporting",
+      "label": "Altitude reporting",
+      "category": "mode"
+    },
+    {
+      "id": "vor-left",
+      "label": "VOR left",
+      "category": "radio"
+    },
+    {
+      "id": "vor-right",
+      "label": "VOR right",
+      "category": "radio"
+    }
+  ],
+  "events": [
+    {
+      "id": "ap-caution-0-0",
+      "fieldId": "ap-caution",
+      "t": 0,
+      "label": "A/P caution",
+      "value": "false",
+      "detail": "Initial decoded state. Autopilot caution flags: L CAUT'N NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ap-hud-0-0",
+      "fieldId": "ap-hud",
+      "t": 0,
+      "label": "A/P HUD flag",
+      "value": "true (SET)",
+      "detail": "Initial decoded state. Decoded HUD engagement annunciation",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ap-warning-0-0",
+      "fieldId": "ap-warning",
+      "t": 0,
+      "label": "A/P warning",
+      "value": "false",
+      "detail": "Initial decoded state. Autopilot warning flags: L WARN NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "alt-hold-0-0",
+      "fieldId": "alt-hold",
+      "t": 0,
+      "label": "Alt hold",
+      "value": "false",
+      "detail": "Initial decoded state. Altitude-hold mode channels: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "alt-reporting-0-0",
+      "fieldId": "alt-reporting",
+      "t": 0,
+      "label": "Altitude reporting",
+      "value": "true (ON)",
+      "detail": "Initial decoded state. Altitude reporting state",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "fd-capt-0-0",
+      "fieldId": "fd-capt",
+      "t": 0,
+      "label": "FD captain",
+      "value": "false (CAPT OFF)",
+      "detail": "Initial decoded state. Captain flight-director switch",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "fd-fo-0-0",
+      "fieldId": "fd-fo",
+      "t": 0,
+      "label": "FD first officer",
+      "value": "false (F/O OFF)",
+      "detail": "Initial decoded state. First-officer flight-director switch",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "flch-0-0",
+      "fieldId": "flch",
+      "t": 0,
+      "label": "FLCH",
+      "value": "false",
+      "detail": "Initial decoded state. Flight-level-change mode channels: L INOPER",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "gs-mode-0-0",
+      "fieldId": "gs-mode",
+      "t": 0,
+      "label": "G/S mode",
+      "value": "false",
+      "detail": "Initial decoded state. Glideslope mode channels: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ias-engaged-0-0",
+      "fieldId": "ias-engaged",
+      "t": 0,
+      "label": "IAS engaged",
+      "value": "false",
+      "detail": "Initial decoded state. FCC IAS engagement flags: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-0-0",
+      "fieldId": "ias-mode",
+      "t": 0,
+      "label": "IAS mode",
+      "value": "false (INOPER)",
+      "detail": "Initial decoded state. IAS mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "mach-engaged-0-0",
+      "fieldId": "mach-engaged",
+      "t": 0,
+      "label": "Mach engaged",
+      "value": "false",
+      "detail": "Initial decoded state. FCC Mach engagement flags: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "mach-mode-0-0",
+      "fieldId": "mach-mode",
+      "t": 0,
+      "label": "Mach mode",
+      "value": "false (INOPER)",
+      "detail": "Initial decoded state. Mach mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "rollout-mode-0-0",
+      "fieldId": "rollout-mode",
+      "t": 0,
+      "label": "Rollout",
+      "value": "false",
+      "detail": "Initial decoded state. Rollout mode channels: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "takeoff-mode-0-0",
+      "fieldId": "takeoff-mode",
+      "t": 0,
+      "label": "T/O mode",
+      "value": "true (L)",
+      "detail": "Initial decoded state. Takeoff pitch mode channels: L P T/O ENGA",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "throttle-hold-0-0",
+      "fieldId": "throttle-hold",
+      "t": 0,
+      "label": "Throttle hold",
+      "value": "false (NO HOLD)",
+      "detail": "Initial decoded state. Throttle hold annunciation",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "thrust-mode-0-0",
+      "fieldId": "thrust-mode",
+      "t": 0,
+      "label": "Thrust mode",
+      "value": "false (INOPER)",
+      "detail": "Initial decoded state. Thrust mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "vs-mode-0-0",
+      "fieldId": "vs-mode",
+      "t": 0,
+      "label": "V/S mode",
+      "value": "false",
+      "detail": "Initial decoded state. Vertical-speed mode channels: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "vnav-0-0",
+      "fieldId": "vnav",
+      "t": 0,
+      "label": "VNAV",
+      "value": "false",
+      "detail": "Initial decoded state. FCC L/C/R VNAV flags: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "vor-right-0-1",
+      "fieldId": "vor-right",
+      "t": 1,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Initial decoded state. Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "ap-cmd-0-2",
+      "fieldId": "ap-cmd",
+      "t": 2,
+      "label": "A/P CMD",
+      "value": "false",
+      "detail": "Initial decoded state. MCP command channels: L ENGA NOT | C ENGA NOT | R ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ap-cws-0-2",
+      "fieldId": "ap-cws",
+      "t": 2,
+      "label": "A/P CWS",
+      "value": "true (R)",
+      "detail": "Initial decoded state. Control-wheel-steering channels: L ENGA NOT | C ENGA NOT | R CWS R ENGA",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "at-disconnect-0-2",
+      "fieldId": "at-disconnect",
+      "t": 2,
+      "label": "A/T disconnect",
+      "value": "false (NORMAL)",
+      "detail": "Initial decoded state. Autothrottle disconnect flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "at-engaged-0-2",
+      "fieldId": "at-engaged",
+      "t": 2,
+      "label": "A/T engaged",
+      "value": "false (NOT SET)",
+      "detail": "Initial decoded state. Autothrottle HUD flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "vor-left-0-3",
+      "fieldId": "vor-left",
+      "t": 3,
+      "label": "VOR left",
+      "value": "112.10 MHz",
+      "detail": "Initial decoded state. Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-1-5",
+      "fieldId": "vor-right",
+      "t": 5,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-2-9",
+      "fieldId": "vor-right",
+      "t": 9,
+      "label": "VOR right",
+      "value": "118.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-3-13",
+      "fieldId": "vor-right",
+      "t": 13,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-4-17",
+      "fieldId": "vor-right",
+      "t": 17,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-5-21",
+      "fieldId": "vor-right",
+      "t": 21,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-6-25",
+      "fieldId": "vor-right",
+      "t": 25,
+      "label": "VOR right",
+      "value": "118.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-7-29",
+      "fieldId": "vor-right",
+      "t": 29,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-8-33",
+      "fieldId": "vor-right",
+      "t": 33,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-9-37",
+      "fieldId": "vor-right",
+      "t": 37,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-10-41",
+      "fieldId": "vor-right",
+      "t": 41,
+      "label": "VOR right",
+      "value": "118.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-11-45",
+      "fieldId": "vor-right",
+      "t": 45,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "thrust-mode-1-49",
+      "fieldId": "thrust-mode",
+      "t": 49,
+      "label": "Thrust mode",
+      "value": "true (OPER)",
+      "detail": "Thrust mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vor-right-12-49",
+      "fieldId": "vor-right",
+      "t": 49,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-13-53",
+      "fieldId": "vor-right",
+      "t": 53,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-14-57",
+      "fieldId": "vor-right",
+      "t": 57,
+      "label": "VOR right",
+      "value": "118.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "throttle-hold-1-60",
+      "fieldId": "throttle-hold",
+      "t": 60,
+      "label": "Throttle hold",
+      "value": "true (HOLD)",
+      "detail": "Throttle hold annunciation",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vor-right-15-61",
+      "fieldId": "vor-right",
+      "t": 61,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-16-65",
+      "fieldId": "vor-right",
+      "t": 65,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-17-69",
+      "fieldId": "vor-right",
+      "t": 69,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-18-73",
+      "fieldId": "vor-right",
+      "t": 73,
+      "label": "VOR right",
+      "value": "118.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-19-77",
+      "fieldId": "vor-right",
+      "t": 77,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-20-81",
+      "fieldId": "vor-right",
+      "t": 81,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-21-85",
+      "fieldId": "vor-right",
+      "t": 85,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-22-89",
+      "fieldId": "vor-right",
+      "t": 89,
+      "label": "VOR right",
+      "value": "118.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-23-93",
+      "fieldId": "vor-right",
+      "t": 93,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-24-97",
+      "fieldId": "vor-right",
+      "t": 97,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-25-101",
+      "fieldId": "vor-right",
+      "t": 101,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "takeoff-mode-1-102",
+      "fieldId": "takeoff-mode",
+      "t": 102,
+      "label": "T/O mode",
+      "value": "false",
+      "detail": "Takeoff pitch mode channels: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "throttle-hold-2-103",
+      "fieldId": "throttle-hold",
+      "t": 103,
+      "label": "Throttle hold",
+      "value": "false (NO HOLD)",
+      "detail": "Throttle hold annunciation",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "vnav-1-104",
+      "fieldId": "vnav",
+      "t": 104,
+      "label": "VNAV",
+      "value": "true (L)",
+      "detail": "FCC L/C/R VNAV flags: L VNAV ENG",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vnav-2-105",
+      "fieldId": "vnav",
+      "t": 105,
+      "label": "VNAV",
+      "value": "false",
+      "detail": "FCC L/C/R VNAV flags: R ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "vor-right-26-105",
+      "fieldId": "vor-right",
+      "t": 105,
+      "label": "VOR right",
+      "value": "118.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "ias-mode-1-106",
+      "fieldId": "ias-mode",
+      "t": 106,
+      "label": "IAS mode",
+      "value": "true (OPER)",
+      "detail": "IAS mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "thrust-mode-2-106",
+      "fieldId": "thrust-mode",
+      "t": 106,
+      "label": "Thrust mode",
+      "value": "false (INOPER)",
+      "detail": "Thrust mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-2-108",
+      "fieldId": "ias-mode",
+      "t": 108,
+      "label": "IAS mode",
+      "value": "false (INOPER)",
+      "detail": "IAS mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "thrust-mode-3-108",
+      "fieldId": "thrust-mode",
+      "t": 108,
+      "label": "Thrust mode",
+      "value": "true (OPER)",
+      "detail": "Thrust mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vnav-3-108",
+      "fieldId": "vnav",
+      "t": 108,
+      "label": "VNAV",
+      "value": "true (L)",
+      "detail": "FCC L/C/R VNAV flags: L VNAV ENG",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vor-right-27-109",
+      "fieldId": "vor-right",
+      "t": 109,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-28-113",
+      "fieldId": "vor-right",
+      "t": 113,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-29-117",
+      "fieldId": "vor-right",
+      "t": 117,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-30-121",
+      "fieldId": "vor-right",
+      "t": 121,
+      "label": "VOR right",
+      "value": "118.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-31-125",
+      "fieldId": "vor-right",
+      "t": 125,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-32-129",
+      "fieldId": "vor-right",
+      "t": 129,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-33-133",
+      "fieldId": "vor-right",
+      "t": 133,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-34-137",
+      "fieldId": "vor-right",
+      "t": 137,
+      "label": "VOR right",
+      "value": "118.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-35-141",
+      "fieldId": "vor-right",
+      "t": 141,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-36-145",
+      "fieldId": "vor-right",
+      "t": 145,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-37-149",
+      "fieldId": "vor-right",
+      "t": 149,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-38-153",
+      "fieldId": "vor-right",
+      "t": 153,
+      "label": "VOR right",
+      "value": "118.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-39-157",
+      "fieldId": "vor-right",
+      "t": 157,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-40-161",
+      "fieldId": "vor-right",
+      "t": 161,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-41-165",
+      "fieldId": "vor-right",
+      "t": 165,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-42-169",
+      "fieldId": "vor-right",
+      "t": 169,
+      "label": "VOR right",
+      "value": "118.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-43-173",
+      "fieldId": "vor-right",
+      "t": 173,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-44-177",
+      "fieldId": "vor-right",
+      "t": 177,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-45-181",
+      "fieldId": "vor-right",
+      "t": 181,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-46-185",
+      "fieldId": "vor-right",
+      "t": 185,
+      "label": "VOR right",
+      "value": "118.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-47-189",
+      "fieldId": "vor-right",
+      "t": 189,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-48-193",
+      "fieldId": "vor-right",
+      "t": 193,
+      "label": "VOR right",
+      "value": "100.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-49-197",
+      "fieldId": "vor-right",
+      "t": 197,
+      "label": "VOR right",
+      "value": "109.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-50-201",
+      "fieldId": "vor-right",
+      "t": 201,
+      "label": "VOR right",
+      "value": "111.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-1-203",
+      "fieldId": "vor-left",
+      "t": 203,
+      "label": "VOR left",
+      "value": "116.30 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-2-567",
+      "fieldId": "vor-left",
+      "t": 567,
+      "label": "VOR left",
+      "value": "113.30 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-51-569",
+      "fieldId": "vor-right",
+      "t": 569,
+      "label": "VOR right",
+      "value": "117.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "ias-mode-3-848",
+      "fieldId": "ias-mode",
+      "t": 848,
+      "label": "IAS mode",
+      "value": "true (OPER)",
+      "detail": "IAS mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "thrust-mode-4-848",
+      "fieldId": "thrust-mode",
+      "t": 848,
+      "label": "Thrust mode",
+      "value": "false (INOPER)",
+      "detail": "Thrust mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "vnav-4-848",
+      "fieldId": "vnav",
+      "t": 848,
+      "label": "VNAV",
+      "value": "false",
+      "detail": "FCC L/C/R VNAV flags: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "alt-hold-1-859",
+      "fieldId": "alt-hold",
+      "t": 859,
+      "label": "Alt hold",
+      "value": "true (C)",
+      "detail": "Altitude-hold mode channels: C ALT HLD EN",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "alt-hold-2-1124",
+      "fieldId": "alt-hold",
+      "t": 1124,
+      "label": "Alt hold",
+      "value": "false",
+      "detail": "Altitude-hold mode channels: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "vnav-5-1124",
+      "fieldId": "vnav",
+      "t": 1124,
+      "label": "VNAV",
+      "value": "true (L)",
+      "detail": "FCC L/C/R VNAV flags: L VNAV ENG",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-4-1125",
+      "fieldId": "ias-mode",
+      "t": 1125,
+      "label": "IAS mode",
+      "value": "false (INOPER)",
+      "detail": "IAS mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "thrust-mode-5-1125",
+      "fieldId": "thrust-mode",
+      "t": 1125,
+      "label": "Thrust mode",
+      "value": "true (OPER)",
+      "detail": "Thrust mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vor-right-52-1189",
+      "fieldId": "vor-right",
+      "t": 1189,
+      "label": "VOR right",
+      "value": "115.60 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-3-1191",
+      "fieldId": "vor-left",
+      "t": 1191,
+      "label": "VOR left",
+      "value": "117.70 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vnav-6-1236",
+      "fieldId": "vnav",
+      "t": 1236,
+      "label": "VNAV",
+      "value": "false",
+      "detail": "FCC L/C/R VNAV flags: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-5-1237",
+      "fieldId": "ias-mode",
+      "t": 1237,
+      "label": "IAS mode",
+      "value": "true (OPER)",
+      "detail": "IAS mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "thrust-mode-6-1237",
+      "fieldId": "thrust-mode",
+      "t": 1237,
+      "label": "Thrust mode",
+      "value": "false (INOPER)",
+      "detail": "Thrust mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "alt-hold-3-1239",
+      "fieldId": "alt-hold",
+      "t": 1239,
+      "label": "Alt hold",
+      "value": "true (C)",
+      "detail": "Altitude-hold mode channels: C ALT HLD EN",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-6-1246",
+      "fieldId": "ias-mode",
+      "t": 1246,
+      "label": "IAS mode",
+      "value": "false (INOPER)",
+      "detail": "IAS mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "mach-mode-1-1246",
+      "fieldId": "mach-mode",
+      "t": 1246,
+      "label": "Mach mode",
+      "value": "true (OPER)",
+      "detail": "Mach mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "alt-hold-4-1497",
+      "fieldId": "alt-hold",
+      "t": 1497,
+      "label": "Alt hold",
+      "value": "false",
+      "detail": "Altitude-hold mode channels: R ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "flch-1-1497",
+      "fieldId": "flch",
+      "t": 1497,
+      "label": "FLCH",
+      "value": "true (R)",
+      "detail": "Flight-level-change mode channels: R OPER",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "mach-engaged-1-1497",
+      "fieldId": "mach-engaged",
+      "t": 1497,
+      "label": "Mach engaged",
+      "value": "true (R)",
+      "detail": "FCC Mach engagement flags: R MACH ENGA",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "mach-mode-2-1497",
+      "fieldId": "mach-mode",
+      "t": 1497,
+      "label": "Mach mode",
+      "value": "false (INOPER)",
+      "detail": "Mach mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "flch-2-1593",
+      "fieldId": "flch",
+      "t": 1593,
+      "label": "FLCH",
+      "value": "false",
+      "detail": "Flight-level-change mode channels: R INOPER",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "mach-engaged-2-1594",
+      "fieldId": "mach-engaged",
+      "t": 1594,
+      "label": "Mach engaged",
+      "value": "false",
+      "detail": "FCC Mach engagement flags: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "mach-mode-3-1594",
+      "fieldId": "mach-mode",
+      "t": 1594,
+      "label": "Mach mode",
+      "value": "true (OPER)",
+      "detail": "Mach mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "alt-hold-5-1604",
+      "fieldId": "alt-hold",
+      "t": 1604,
+      "label": "Alt hold",
+      "value": "true (L)",
+      "detail": "Altitude-hold mode channels: L ALT HLD EN",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "alt-hold-6-1622",
+      "fieldId": "alt-hold",
+      "t": 1622,
+      "label": "Alt hold",
+      "value": "false",
+      "detail": "Altitude-hold mode channels: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "vnav-7-1622",
+      "fieldId": "vnav",
+      "t": 1622,
+      "label": "VNAV",
+      "value": "true (L)",
+      "detail": "FCC L/C/R VNAV flags: L VNAV ENG",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vor-right-53-1761",
+      "fieldId": "vor-right",
+      "t": 1761,
+      "label": "VOR right",
+      "value": "114.30 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-4-1763",
+      "fieldId": "vor-left",
+      "t": 1763,
+      "label": "VOR left",
+      "value": "115.90 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-54-1765",
+      "fieldId": "vor-right",
+      "t": 1765,
+      "label": "VOR right",
+      "value": "113.60 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-5-1775",
+      "fieldId": "vor-left",
+      "t": 1775,
+      "label": "VOR left",
+      "value": "117.70 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-55-1777",
+      "fieldId": "vor-right",
+      "t": 1777,
+      "label": "VOR right",
+      "value": "115.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-56-1893",
+      "fieldId": "vor-right",
+      "t": 1893,
+      "label": "VOR right",
+      "value": "117.70 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-6-1895",
+      "fieldId": "vor-left",
+      "t": 1895,
+      "label": "VOR left",
+      "value": "117.10 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-7-1995",
+      "fieldId": "vor-left",
+      "t": 1995,
+      "label": "VOR left",
+      "value": "115.90 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-57-1997",
+      "fieldId": "vor-right",
+      "t": 1997,
+      "label": "VOR right",
+      "value": "115.90 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-58-2077",
+      "fieldId": "vor-right",
+      "t": 2077,
+      "label": "VOR right",
+      "value": "113.60 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-8-2079",
+      "fieldId": "vor-left",
+      "t": 2079,
+      "label": "VOR left",
+      "value": "117.10 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-59-2081",
+      "fieldId": "vor-right",
+      "t": 2081,
+      "label": "VOR right",
+      "value": "117.40 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-9-2095",
+      "fieldId": "vor-left",
+      "t": 2095,
+      "label": "VOR left",
+      "value": "117.00 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-60-2097",
+      "fieldId": "vor-right",
+      "t": 2097,
+      "label": "VOR right",
+      "value": "116.70 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "alt-reporting-1-2254",
+      "fieldId": "alt-reporting",
+      "t": 2254,
+      "label": "Altitude reporting",
+      "value": "false (OFF)",
+      "detail": "Altitude reporting state",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "vor-left-10-2283",
+      "fieldId": "vor-left",
+      "t": 2283,
+      "label": "VOR left",
+      "value": "115.90 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-61-2285",
+      "fieldId": "vor-right",
+      "t": 2285,
+      "label": "VOR right",
+      "value": "111.60 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-62-2289",
+      "fieldId": "vor-right",
+      "t": 2289,
+      "label": "VOR right",
+      "value": "111.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-11-2295",
+      "fieldId": "vor-left",
+      "t": 2295,
+      "label": "VOR left",
+      "value": "116.70 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-12-2303",
+      "fieldId": "vor-left",
+      "t": 2303,
+      "label": "VOR left",
+      "value": "115.90 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-13-2315",
+      "fieldId": "vor-left",
+      "t": 2315,
+      "label": "VOR left",
+      "value": "117.40 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-14-2323",
+      "fieldId": "vor-left",
+      "t": 2323,
+      "label": "VOR left",
+      "value": "117.00 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-15-2335",
+      "fieldId": "vor-left",
+      "t": 2335,
+      "label": "VOR left",
+      "value": "117.70 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-16-2495",
+      "fieldId": "vor-left",
+      "t": 2495,
+      "label": "VOR left",
+      "value": "115.90 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "flch-3-2516",
+      "fieldId": "flch",
+      "t": 2516,
+      "label": "FLCH",
+      "value": "true (L)",
+      "detail": "Flight-level-change mode channels: L OPER",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ias-engaged-1-2516",
+      "fieldId": "ias-engaged",
+      "t": 2516,
+      "label": "IAS engaged",
+      "value": "true (L)",
+      "detail": "FCC IAS engagement flags: L IAS ENGA",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vnav-8-2516",
+      "fieldId": "vnav",
+      "t": 2516,
+      "label": "VNAV",
+      "value": "false",
+      "detail": "FCC L/C/R VNAV flags: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "mach-mode-4-2517",
+      "fieldId": "mach-mode",
+      "t": 2517,
+      "label": "Mach mode",
+      "value": "false (INOPER)",
+      "detail": "Mach mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "throttle-hold-3-2548",
+      "fieldId": "throttle-hold",
+      "t": 2548,
+      "label": "Throttle hold",
+      "value": "true (HOLD)",
+      "detail": "Throttle hold annunciation",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vor-left-17-2623",
+      "fieldId": "vor-left",
+      "t": 2623,
+      "label": "VOR left",
+      "value": "117.40 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-18-2655",
+      "fieldId": "vor-left",
+      "t": 2655,
+      "label": "VOR left",
+      "value": "117.70 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-19-2667",
+      "fieldId": "vor-left",
+      "t": 2667,
+      "label": "VOR left",
+      "value": "116.80 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-20-2675",
+      "fieldId": "vor-left",
+      "t": 2675,
+      "label": "VOR left",
+      "value": "117.40 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-21-2687",
+      "fieldId": "vor-left",
+      "t": 2687,
+      "label": "VOR left",
+      "value": "115.90 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-22-2695",
+      "fieldId": "vor-left",
+      "t": 2695,
+      "label": "VOR left",
+      "value": "117.70 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-23-2707",
+      "fieldId": "vor-left",
+      "t": 2707,
+      "label": "VOR left",
+      "value": "117.10 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-24-2787",
+      "fieldId": "vor-left",
+      "t": 2787,
+      "label": "VOR left",
+      "value": "117.40 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "flch-4-2828",
+      "fieldId": "flch",
+      "t": 2828,
+      "label": "FLCH",
+      "value": "false",
+      "detail": "Flight-level-change mode channels: L INOPER",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ias-engaged-2-2828",
+      "fieldId": "ias-engaged",
+      "t": 2828,
+      "label": "IAS engaged",
+      "value": "false",
+      "detail": "FCC IAS engagement flags: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-7-2829",
+      "fieldId": "ias-mode",
+      "t": 2829,
+      "label": "IAS mode",
+      "value": "true (OPER)",
+      "detail": "IAS mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "throttle-hold-4-2829",
+      "fieldId": "throttle-hold",
+      "t": 2829,
+      "label": "Throttle hold",
+      "value": "false (NO HOLD)",
+      "detail": "Throttle hold annunciation",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "alt-hold-7-2848",
+      "fieldId": "alt-hold",
+      "t": 2848,
+      "label": "Alt hold",
+      "value": "true (L)",
+      "detail": "Altitude-hold mode channels: L ALT HLD EN",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vor-left-25-2879",
+      "fieldId": "vor-left",
+      "t": 2879,
+      "label": "VOR left",
+      "value": "115.90 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-26-2891",
+      "fieldId": "vor-left",
+      "t": 2891,
+      "label": "VOR left",
+      "value": "117.70 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-27-2899",
+      "fieldId": "vor-left",
+      "t": 2899,
+      "label": "VOR left",
+      "value": "116.80 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-28-2911",
+      "fieldId": "vor-left",
+      "t": 2911,
+      "label": "VOR left",
+      "value": "117.40 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "alt-hold-8-2912",
+      "fieldId": "alt-hold",
+      "t": 2912,
+      "label": "Alt hold",
+      "value": "false",
+      "detail": "Altitude-hold mode channels: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "flch-5-2912",
+      "fieldId": "flch",
+      "t": 2912,
+      "label": "FLCH",
+      "value": "true (L)",
+      "detail": "Flight-level-change mode channels: L OPER",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ias-engaged-3-2912",
+      "fieldId": "ias-engaged",
+      "t": 2912,
+      "label": "IAS engaged",
+      "value": "true (L)",
+      "detail": "FCC IAS engagement flags: L IAS ENGA",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-8-2912",
+      "fieldId": "ias-mode",
+      "t": 2912,
+      "label": "IAS mode",
+      "value": "false (INOPER)",
+      "detail": "IAS mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "vor-left-29-2919",
+      "fieldId": "vor-left",
+      "t": 2919,
+      "label": "VOR left",
+      "value": "117.70 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "ap-warning-1-2929",
+      "fieldId": "ap-warning",
+      "t": 2929,
+      "label": "A/P warning",
+      "value": "true (R)",
+      "detail": "Autopilot warning flags: R A/P WARN",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ap-warning-2-2930",
+      "fieldId": "ap-warning",
+      "t": 2930,
+      "label": "A/P warning",
+      "value": "false",
+      "detail": "Autopilot warning flags: L WARN NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "vor-left-30-2931",
+      "fieldId": "vor-left",
+      "t": 2931,
+      "label": "VOR left",
+      "value": "115.90 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "ap-warning-3-2933",
+      "fieldId": "ap-warning",
+      "t": 2933,
+      "label": "A/P warning",
+      "value": "true (R)",
+      "detail": "Autopilot warning flags: R A/P WARN",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ap-warning-4-2934",
+      "fieldId": "ap-warning",
+      "t": 2934,
+      "label": "A/P warning",
+      "value": "false",
+      "detail": "Autopilot warning flags: L WARN NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "at-disconnect-1-2938",
+      "fieldId": "at-disconnect",
+      "t": 2938,
+      "label": "A/T disconnect",
+      "value": "true (DISCONNECT)",
+      "detail": "Autothrottle disconnect flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vor-left-31-2939",
+      "fieldId": "vor-left",
+      "t": 2939,
+      "label": "VOR left",
+      "value": "117.10 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-32-2947",
+      "fieldId": "vor-left",
+      "t": 2947,
+      "label": "VOR left",
+      "value": "113.35 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-33-2951",
+      "fieldId": "vor-left",
+      "t": 2951,
+      "label": "VOR left",
+      "value": "113.50 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-34-2975",
+      "fieldId": "vor-left",
+      "t": 2975,
+      "label": "VOR left",
+      "value": "113.55 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-35-2979",
+      "fieldId": "vor-left",
+      "t": 2979,
+      "label": "VOR left",
+      "value": "113.50 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "ap-warning-5-3084",
+      "fieldId": "ap-warning",
+      "t": 3084,
+      "label": "A/P warning",
+      "value": "true (L)",
+      "detail": "Autopilot warning flags: L A/P WARN",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ap-warning-6-3085",
+      "fieldId": "ap-warning",
+      "t": 3085,
+      "label": "A/P warning",
+      "value": "false",
+      "detail": "Autopilot warning flags: R WARN NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "at-disconnect-2-3134",
+      "fieldId": "at-disconnect",
+      "t": 3134,
+      "label": "A/T disconnect",
+      "value": "false (NORMAL)",
+      "detail": "Autothrottle disconnect flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "throttle-hold-5-3171",
+      "fieldId": "throttle-hold",
+      "t": 3171,
+      "label": "Throttle hold",
+      "value": "true (HOLD)",
+      "detail": "Throttle hold annunciation",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "throttle-hold-6-3223",
+      "fieldId": "throttle-hold",
+      "t": 3223,
+      "label": "Throttle hold",
+      "value": "false (NO HOLD)",
+      "detail": "Throttle hold annunciation",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "alt-hold-9-3304",
+      "fieldId": "alt-hold",
+      "t": 3304,
+      "label": "Alt hold",
+      "value": "true (L)",
+      "detail": "Altitude-hold mode channels: L ALT HLD EN",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "flch-6-3304",
+      "fieldId": "flch",
+      "t": 3304,
+      "label": "FLCH",
+      "value": "false",
+      "detail": "Flight-level-change mode channels: L INOPER",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ias-engaged-4-3304",
+      "fieldId": "ias-engaged",
+      "t": 3304,
+      "label": "IAS engaged",
+      "value": "false",
+      "detail": "FCC IAS engagement flags: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-9-3305",
+      "fieldId": "ias-mode",
+      "t": 3305,
+      "label": "IAS mode",
+      "value": "true (OPER)",
+      "detail": "IAS mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vor-right-63-3365",
+      "fieldId": "vor-right",
+      "t": 3365,
+      "label": "VOR right",
+      "value": "117.10 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-64-3413",
+      "fieldId": "vor-right",
+      "t": 3413,
+      "label": "VOR right",
+      "value": "111.85 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-65-3417",
+      "fieldId": "vor-right",
+      "t": 3417,
+      "label": "VOR right",
+      "value": "111.45 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-66-3421",
+      "fieldId": "vor-right",
+      "t": 3421,
+      "label": "VOR right",
+      "value": "111.05 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-right-67-3425",
+      "fieldId": "vor-right",
+      "t": 3425,
+      "label": "VOR right",
+      "value": "111.00 MHz",
+      "detail": "Raw tuned right VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "ias-mode-10-3617",
+      "fieldId": "ias-mode",
+      "t": 3617,
+      "label": "IAS mode",
+      "value": "false (INOPER)",
+      "detail": "IAS mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "at-disconnect-3-3618",
+      "fieldId": "at-disconnect",
+      "t": 3618,
+      "label": "A/T disconnect",
+      "value": "true (DISCONNECT)",
+      "detail": "Autothrottle disconnect flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-11-3627",
+      "fieldId": "ias-mode",
+      "t": 3627,
+      "label": "IAS mode",
+      "value": "true (OPER)",
+      "detail": "IAS mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "at-disconnect-4-3630",
+      "fieldId": "at-disconnect",
+      "t": 3630,
+      "label": "A/T disconnect",
+      "value": "false (NORMAL)",
+      "detail": "Autothrottle disconnect flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-12-3632",
+      "fieldId": "ias-mode",
+      "t": 3632,
+      "label": "IAS mode",
+      "value": "false (INOPER)",
+      "detail": "IAS mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "at-disconnect-5-3634",
+      "fieldId": "at-disconnect",
+      "t": 3634,
+      "label": "A/T disconnect",
+      "value": "true (DISCONNECT)",
+      "detail": "Autothrottle disconnect flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-13-3679",
+      "fieldId": "ias-mode",
+      "t": 3679,
+      "label": "IAS mode",
+      "value": "true (OPER)",
+      "detail": "IAS mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-14-3680",
+      "fieldId": "ias-mode",
+      "t": 3680,
+      "label": "IAS mode",
+      "value": "false (INOPER)",
+      "detail": "IAS mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "alt-hold-10-3741",
+      "fieldId": "alt-hold",
+      "t": 3741,
+      "label": "Alt hold",
+      "value": "false",
+      "detail": "Altitude-hold mode channels: R ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "flch-7-3741",
+      "fieldId": "flch",
+      "t": 3741,
+      "label": "FLCH",
+      "value": "true (R)",
+      "detail": "Flight-level-change mode channels: R OPER",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ias-engaged-5-3741",
+      "fieldId": "ias-engaged",
+      "t": 3741,
+      "label": "IAS engaged",
+      "value": "true (R)",
+      "detail": "FCC IAS engagement flags: R IAS ENGA",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "at-disconnect-6-3742",
+      "fieldId": "at-disconnect",
+      "t": 3742,
+      "label": "A/T disconnect",
+      "value": "false (NORMAL)",
+      "detail": "Autothrottle disconnect flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "throttle-hold-7-3774",
+      "fieldId": "throttle-hold",
+      "t": 3774,
+      "label": "Throttle hold",
+      "value": "true (HOLD)",
+      "detail": "Throttle hold annunciation",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "flch-8-4172",
+      "fieldId": "flch",
+      "t": 4172,
+      "label": "FLCH",
+      "value": "false",
+      "detail": "Flight-level-change mode channels: L INOPER",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ias-engaged-6-4172",
+      "fieldId": "ias-engaged",
+      "t": 4172,
+      "label": "IAS engaged",
+      "value": "false",
+      "detail": "FCC IAS engagement flags: L ENGA NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-15-4173",
+      "fieldId": "ias-mode",
+      "t": 4173,
+      "label": "IAS mode",
+      "value": "true (OPER)",
+      "detail": "IAS mode operating flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "throttle-hold-8-4173",
+      "fieldId": "throttle-hold",
+      "t": 4173,
+      "label": "Throttle hold",
+      "value": "false (NO HOLD)",
+      "detail": "Throttle hold annunciation",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ap-warning-7-4187",
+      "fieldId": "ap-warning",
+      "t": 4187,
+      "label": "A/P warning",
+      "value": "true (C)",
+      "detail": "Autopilot warning flags: C A/P WARN",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ap-warning-8-4188",
+      "fieldId": "ap-warning",
+      "t": 4188,
+      "label": "A/P warning",
+      "value": "false",
+      "detail": "Autopilot warning flags: L WARN NOT",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "ias-mode-16-4189",
+      "fieldId": "ias-mode",
+      "t": 4189,
+      "label": "IAS mode",
+      "value": "false (INOPER)",
+      "detail": "IAS mode operating flag",
+      "active": false,
+      "category": "mode"
+    },
+    {
+      "id": "at-disconnect-7-4190",
+      "fieldId": "at-disconnect",
+      "t": 4190,
+      "label": "A/T disconnect",
+      "value": "true (DISCONNECT)",
+      "detail": "Autothrottle disconnect flag",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "alt-hold-11-4335",
+      "fieldId": "alt-hold",
+      "t": 4335,
+      "label": "Alt hold",
+      "value": "true (C)",
+      "detail": "Altitude-hold mode channels: C ALT HLD EN",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "vor-left-36-4367",
+      "fieldId": "vor-left",
+      "t": 4367,
+      "label": "VOR left",
+      "value": "113.35 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-37-4371",
+      "fieldId": "vor-left",
+      "t": 4371,
+      "label": "VOR left",
+      "value": "111.65 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "vor-left-38-4375",
+      "fieldId": "vor-left",
+      "t": 4375,
+      "label": "VOR left",
+      "value": "111.00 MHz",
+      "detail": "Raw tuned left VOR frequency",
+      "active": null,
+      "category": "radio"
+    },
+    {
+      "id": "ap-caution-1-4727",
+      "fieldId": "ap-caution",
+      "t": 4727,
+      "label": "A/P caution",
+      "value": "true (C)",
+      "detail": "Autopilot caution flags: C A/P CAUT'N",
+      "active": true,
+      "category": "mode"
+    },
+    {
+      "id": "ap-warning-9-4727",
+      "fieldId": "ap-warning",
+      "t": 4727,
+      "label": "A/P warning",
+      "value": "true (C)",
+      "detail": "Autopilot warning flags: C A/P WARN",
+      "active": true,
+      "category": "mode"
+    }
+  ]
+}

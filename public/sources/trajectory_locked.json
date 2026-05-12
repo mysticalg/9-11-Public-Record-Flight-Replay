@@ -1,0 +1,78 @@
+{
+  "id": "aa77_public_historical_replay_mvp_placeholder",
+  "source": "NTSB Flight Path Study / 9-11 Commission public-record placeholder",
+  "mode": "passive_replay_only",
+  "editable": false,
+  "notice": "Approximate locked development trajectory. Replace with source-derived public record values before documentary analysis.",
+  "units": {
+    "position": "meters_enu",
+    "altitude": "meters",
+    "time": "seconds_from_replay_start"
+  },
+  "points": [
+    {
+      "t": 0,
+      "x": -3200,
+      "y": 420,
+      "z": -980,
+      "confidence": "low",
+      "source_ref": "NTSB Flight Path Study / development placeholder"
+    },
+    {
+      "t": 12,
+      "x": -2760,
+      "y": 355,
+      "z": -780,
+      "confidence": "low",
+      "source_ref": "NTSB Flight Path Study / development placeholder"
+    },
+    {
+      "t": 24,
+      "x": -2270,
+      "y": 275,
+      "z": -550,
+      "confidence": "medium",
+      "source_ref": "NTSB Flight Path Study / final approach schematic"
+    },
+    {
+      "t": 36,
+      "x": -1730,
+      "y": 190,
+      "z": -330,
+      "confidence": "medium",
+      "source_ref": "NTSB Flight Path Study / final approach schematic"
+    },
+    {
+      "t": 48,
+      "x": -1210,
+      "y": 112,
+      "z": -175,
+      "confidence": "medium",
+      "source_ref": "NTSB Flight Path Study / public-record interpolation"
+    },
+    {
+      "t": 58,
+      "x": -750,
+      "y": 55,
+      "z": -90,
+      "confidence": "medium",
+      "source_ref": "NTSB Flight Path Study / public-record interpolation"
+    },
+    {
+      "t": 67,
+      "x": -360,
+      "y": 18,
+      "z": -38,
+      "confidence": "medium",
+      "source_ref": "Pentagon security-camera timing comparison / inferred"
+    },
+    {
+      "t": 72,
+      "x": -245,
+      "y": 9,
+      "z": -22,
+      "confidence": "high",
+      "source_ref": "9/11 Commission timeline / public-record endpoint"
+    }
+  ]
+}

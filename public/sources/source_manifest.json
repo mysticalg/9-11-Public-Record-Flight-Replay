@@ -1,0 +1,39 @@
+{
+  "project": "9/11 Public Record Flight Replay",
+  "mode": "passive_replay_only",
+  "notice": "Source pack placeholders. Add public source files locally before documentary analysis.",
+  "required_sources": [
+    {
+      "id": "ntsb-aa77-flight-path-study",
+      "title": "NTSB Flight Path Study for American Airlines Flight 77",
+      "path": "/sources/ntsb/AA77_Flight_Path_Study.pdf",
+      "status": "not_bundled"
+    },
+    {
+      "id": "911-commission-report",
+      "title": "9/11 Commission Report",
+      "path": "/sources/commission/911_Commission_Report.pdf",
+      "status": "not_bundled"
+    },
+    {
+      "id": "pentagon-security-camera-1",
+      "title": "Released Pentagon security-camera footage, camera 1",
+      "path": "/sources/video/pentagon_security_camera_1.ogv",
+      "status": "not_bundled"
+    },
+    {
+      "id": "pentagon-security-camera-2",
+      "title": "Released Pentagon security-camera footage, camera 2",
+      "path": "/sources/video/pentagon_security_camera_2.ogv",
+      "status": "not_bundled"
+    },
+    {
+      "id": "ikonos-pentagon-2001-09-12",
+      "title": "IKONOS Pentagon satellite reference image, September 12 2001",
+      "path": "/sources/pentagon_ikonos_2001_09_12_spaceflightnow.jpg",
+      "status": "bundled_reference_image",
+      "source": "https://spaceflightnow.com/news/n0109/12ikonospentagon/",
+      "caveat": "Post-attack public JPG reference image, not a georeferenced tile. Used only for approximate visual comparison."
+    }
+  ]
+}

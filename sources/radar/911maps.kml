@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+<NetworkLink>
+  <name>911maps</name>
+  <visibility>1</visibility>
+  <description></description>
+  <Url>
+    <href>http://www.11-septembre.com/GoogleEarth/911maps.kmz?</href>
+  </Url>
+</NetworkLink>
+</kml>
