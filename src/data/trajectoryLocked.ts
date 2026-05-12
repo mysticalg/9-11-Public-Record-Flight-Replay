@@ -355,6 +355,15 @@ export const sources: SourceRecord[] = [
     role: "inferred"
   },
   {
+    id: "nist-wtc-impact-attitudes",
+    title: "WTC aircraft impact attitude references",
+    type: "Public impact-condition analysis",
+    reference:
+      "NIST NCSTAR 1-2 refined impact-condition tables are used only to blend passive WTC terminal visual attitude: AA11 about 443 mph, 10.6 deg below horizontal, 25 deg left-wing-down; UA175 about 542 mph, 6 deg below horizontal, -3 deg yaw relative to trajectory, 38 deg left-wing-down.",
+    confidence: "medium",
+    role: "documented"
+  },
+  {
     id: "shanksville-site-marker",
     title: "Flight 93 Shanksville site marker",
     type: "Public terminal site context",

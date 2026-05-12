@@ -14,7 +14,7 @@ import { DisclaimerModal } from "./components/DisclaimerModal";
 import { SourcePanel } from "./components/SourcePanel";
 import { TelemetryDials } from "./components/TelemetryDials";
 import { TelemetryPlots } from "./components/TelemetryPlots";
-import { TimelineControls } from "./components/TimelineControls";
+import { PlaybackStrip, TimelineControls } from "./components/TimelineControls";
 import { ReplayScene } from "./scene/ReplayScene";
 import { useReplayStore } from "./store/replayStore";
 import { evaluateFlightEnvelope, type FlightEnvelopeWarning } from "./engine/flightEnvelope";
@@ -75,16 +75,7 @@ export function App() {
         </div>
       </header>
 
-      <section className="accuracy-warning" role="status">
-        <strong>Accuracy status: mixed evidence.</strong>
-        The shared context timeline starts at the first listed aircraft takeoff at 07:59; AA11/UA175 use the same timed
-        public DCC radar pipeline, UA93 uses public black-box coordinate samples, and AA77 uses decoded public FDR rows
-        through the last decoded row before a labeled evidence-aligned impact visualization. Modern satellite imagery now
-        uses low-zoom route context plus high-zoom Pentagon/WTC/Shanksville site tiles; WTC towers are scale massing from
-        public footprint/height references. These site models and impact bands are context overlays, not flight-physics or
-        damage simulations. Camera transforms, FOV, and physical-evidence marker positions still need surveyed calibration
-        before they can be treated as exact.
-      </section>
+      <PlaybackStrip duration={replayDuration} />
 
       <section className="viewer-layout">
         <div className="viewport-column">

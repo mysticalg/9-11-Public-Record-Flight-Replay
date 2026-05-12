@@ -17,6 +17,7 @@ interface SourcePanelProps {
 export function SourcePanel({ replayState, activeFlightId, activeMarker, sources, trajectoryNotice }: SourcePanelProps) {
   const warnings = evaluateFlightEnvelope(replayState);
   const aircraftDimensions = aircraftReferenceDimensionsForFlight(activeFlightId);
+  const sourcePrefix = activeFlightId === "aa77" ? "FDR" : activeFlightId === "ua93" ? "Black-box" : "Radar/NIST";
 
   return (
     <section className="panel source-panel" aria-label="Sources and current replay state">
@@ -54,18 +55,18 @@ export function SourcePanel({ replayState, activeFlightId, activeMarker, sources
             </dd>
           </div>
           <div>
-            <dt>FDR altitude</dt>
+            <dt>{sourcePrefix} altitude</dt>
             <dd>
               {formatNumber(replayState.altitudeFeet, "ft")}{" "}
               <span className="source-inline">{formatAltitudeSource(replayState.altitudeSource)}</span>
             </dd>
           </div>
           <div>
-            <dt>FDR yaw / heading</dt>
+            <dt>{sourcePrefix} yaw / heading</dt>
             <dd>{formatNumber(replayState.yawDeg ?? replayState.headingDeg, "deg")}</dd>
           </div>
           <div>
-            <dt>FDR track</dt>
+            <dt>{sourcePrefix} track</dt>
             <dd>{formatNumber(replayState.trackDeg, "deg")}</dd>
           </div>
           <div>
@@ -83,7 +84,7 @@ export function SourcePanel({ replayState, activeFlightId, activeMarker, sources
             </dd>
           </div>
           <div>
-            <dt>FDR speed</dt>
+            <dt>{sourcePrefix} speed</dt>
             <dd>
               CAS {formatNumber(replayState.computedAirspeedKt, "kt")} / GS{" "}
               {formatNumber(replayState.groundSpeedKt, "kt")}
@@ -102,7 +103,7 @@ export function SourcePanel({ replayState, activeFlightId, activeMarker, sources
             </dd>
           </div>
           <div>
-            <dt>FDR accelerations</dt>
+            <dt>{sourcePrefix} accelerations</dt>
             <dd className={warningClass(warnings, ["verticalAccel", "lateralAccel", "longitudinalAccel"])}>
               V {formatNumber(replayState.verticalAccelG, "g")} / Lat {formatSignedNumber(replayState.lateralAccelG, "g", 3)} /
               Long {formatSignedNumber(replayState.longitudinalAccelG, "g", 3)}

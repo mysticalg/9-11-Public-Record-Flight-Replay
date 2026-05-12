@@ -23,6 +23,81 @@ import type { FlightId } from "../types";
 const speeds: ReplaySpeed[] = [0.1, 0.25, 0.5, 1, 4, 8, 16];
 const finalReplayTailSeconds = 20;
 
+export function PlaybackStrip({ duration }: { duration: number }) {
+  const { currentTime, isPlaying, speed, setCurrentTime, setIsPlaying, setSpeed } = useReplayStore();
+  const timelineStartTime = sharedTimelineStartReplayOffset;
+  const timelineEndTime = Math.max(sharedTimelineEndReplayOffset, duration);
+  const atReplayEnd = currentTime >= timelineEndTime - 0.1;
+
+  const togglePlayback = () => {
+    if (isPlaying) {
+      setIsPlaying(false);
+      return;
+    }
+
+    if (atReplayEnd) {
+      setCurrentTime(Math.max(timelineStartTime, timelineEndTime - finalReplayTailSeconds));
+    }
+
+    setIsPlaying(true);
+  };
+
+  return (
+    <section className="playback-strip" aria-label="Playback controls">
+      <div className="playback-actions">
+        <button
+          className="icon-button primary"
+          type="button"
+          onClick={togglePlayback}
+          aria-label={isPlaying ? "Pause replay" : atReplayEnd ? "Replay final segment" : "Play replay"}
+          title={isPlaying ? "Pause replay" : atReplayEnd ? "Replay final segment" : "Play replay"}
+        >
+          {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+        </button>
+        <button
+          className="icon-button"
+          type="button"
+          onClick={() => {
+            setCurrentTime(timelineStartTime);
+            setIsPlaying(false);
+          }}
+          aria-label="Reset replay"
+          title="Reset replay"
+        >
+          <RotateCcw size={18} />
+        </button>
+      </div>
+
+      <div className="playback-readouts">
+        <div>
+          <span>Replay</span>
+          <strong>{formatReplayTime(currentTime)}</strong>
+        </div>
+        <div>
+          <span>Historical clock</span>
+          <strong>{formatHistoricalClock(currentTime)}</strong>
+        </div>
+      </div>
+
+      <div className="playback-speed-group">
+        <span>Speed</span>
+        <div className="segmented" aria-label="Replay speed">
+          {speeds.map((option) => (
+            <button
+              key={option}
+              type="button"
+              className={speed === option ? "active" : ""}
+              onClick={() => setSpeed(option)}
+            >
+              {option}x
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function TimelineControls({ duration }: { duration: number }) {
   const spokenTransmissionIdsRef = useRef<Set<string>>(new Set());
   const previousClockSecondsRef = useRef<number | null>(null);
@@ -33,7 +108,6 @@ export function TimelineControls({ duration }: { duration: number }) {
   const {
     currentTime,
     isPlaying,
-    speed,
     activeFlightId,
     showLabels,
     showFlightPath,
@@ -52,7 +126,6 @@ export function TimelineControls({ duration }: { duration: number }) {
     smoothReplay,
     setCurrentTime,
     setIsPlaying,
-    setSpeed,
     setActiveFlightId,
     toggleLabels,
     toggleFlightPath,
@@ -76,7 +149,6 @@ export function TimelineControls({ duration }: { duration: number }) {
   const currentClockSeconds = replayStartSeconds + currentTime;
   const timelineStartTime = sharedTimelineStartReplayOffset;
   const timelineEndTime = Math.max(sharedTimelineEndReplayOffset, duration);
-  const atReplayEnd = currentTime >= timelineEndTime - 0.1;
   const timelineEndClockSeconds = Math.max(
     defaultContextTimelineEndSeconds,
     ...contextTimelineEvents.map((event) => event.endClockSeconds ?? event.clockSeconds),
@@ -159,49 +231,9 @@ export function TimelineControls({ duration }: { duration: number }) {
     }
   }, [radioTranscriptAudioEnabled, speechSupported]);
 
-  const togglePlayback = () => {
-    if (isPlaying) {
-      setIsPlaying(false);
-      return;
-    }
-
-    if (atReplayEnd) {
-      setCurrentTime(Math.max(timelineStartTime, timelineEndTime - finalReplayTailSeconds));
-    }
-
-    setIsPlaying(true);
-  };
-
   return (
     <section className="timeline-panel" aria-label="Timeline replay controls">
       <div className="timeline-topline">
-        <button
-          className="icon-button primary"
-          type="button"
-          onClick={togglePlayback}
-          aria-label={isPlaying ? "Pause replay" : atReplayEnd ? "Replay final segment" : "Play replay"}
-          title={isPlaying ? "Pause replay" : atReplayEnd ? "Replay final segment" : "Play replay"}
-        >
-          {isPlaying ? <Pause size={20} /> : <Play size={20} />}
-        </button>
-        <button
-          className="icon-button"
-          type="button"
-          onClick={() => {
-            setCurrentTime(timelineStartTime);
-            setIsPlaying(false);
-          }}
-          aria-label="Reset replay"
-          title="Reset replay"
-        >
-          <RotateCcw size={18} />
-        </button>
-
-        <div className="time-readouts">
-          <span>{formatReplayTime(currentTime)}</span>
-          <span>{formatHistoricalClock(currentTime)}</span>
-        </div>
-
         <label className="timeline-slider-label">
           <span>Shared timeline</span>
           <input
@@ -228,19 +260,6 @@ export function TimelineControls({ duration }: { duration: number }) {
       />
 
       <div className="control-row">
-        <div className="segmented" aria-label="Replay speed">
-          {speeds.map((option) => (
-            <button
-              key={option}
-              type="button"
-              className={speed === option ? "active" : ""}
-              onClick={() => setSpeed(option)}
-            >
-              {option}x
-            </button>
-          ))}
-        </div>
-
         <label className="toggle-control">
           <input type="checkbox" checked={smoothReplay} onChange={toggleSmoothReplay} />
           <span>Smooth replay</span>

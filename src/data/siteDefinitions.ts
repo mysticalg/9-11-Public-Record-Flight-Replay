@@ -30,6 +30,18 @@ export interface WtcTowerDefinition {
   source: string;
 }
 
+export interface WtcImpactAttitudeDefinition {
+  flightId: Extract<FlightId, "aa11" | "ua175">;
+  label: string;
+  impactSpeedMph: number;
+  verticalApproachDeg: number;
+  fuselageNoseUpRelativeDeg: number;
+  yawOffsetRelativeToPathDeg: number;
+  leftWingDownRollDeg: number;
+  blendLeadSeconds: number;
+  source: string;
+}
+
 const feetToMeters = 0.3048;
 
 export const siteDefinitions: Record<SiteId, SiteDefinition> = {
@@ -52,7 +64,7 @@ export const siteDefinitions: Record<SiteId, SiteDefinition> = {
     shortLabel: "WTC",
     center: { lat: 40.71162, lon: -74.01314 },
     highDetailZoom: 17,
-    highDetailPaddingMeters: 620,
+    highDetailPaddingMeters: 1500,
     regionalZoom: 9,
     regionalPaddingMeters: 2400,
     caveat:
@@ -115,6 +127,36 @@ export const wtcTowerDefinitions: WtcTowerDefinition[] = [
     source: "911maps WTC2 208 ft 10 in exterior box; NIST tower height"
   }
 ];
+
+export const wtcImpactAttitudeDefinitions: Record<
+  Extract<FlightId, "aa11" | "ua175">,
+  WtcImpactAttitudeDefinition
+> = {
+  aa11: {
+    flightId: "aa11",
+    label: "AA11 WTC 1 impact attitude",
+    impactSpeedMph: 443,
+    verticalApproachDeg: -10.6,
+    fuselageNoseUpRelativeDeg: 2,
+    yawOffsetRelativeToPathDeg: 0,
+    leftWingDownRollDeg: 25,
+    blendLeadSeconds: 70,
+    source:
+      "NIST NCSTAR 1-2 Table E-8 refined aircraft impact conditions: AA11 speed 443 mph, 10.6 deg below horizontal, 25 deg left-wing-down roll."
+  },
+  ua175: {
+    flightId: "ua175",
+    label: "UA175 WTC 2 impact attitude",
+    impactSpeedMph: 542,
+    verticalApproachDeg: -6,
+    fuselageNoseUpRelativeDeg: 1,
+    yawOffsetRelativeToPathDeg: -3,
+    leftWingDownRollDeg: 38,
+    blendLeadSeconds: 70,
+    source:
+      "NIST NCSTAR 1-2 Table E-8 refined aircraft impact conditions: UA175 speed 542 mph, 6 deg below horizontal, -3 deg fuselage yaw relative to trajectory, 38 deg left-wing-down roll."
+  }
+};
 
 export function terminalSiteForFlight(flightId: FlightId) {
   return siteDefinitions[flightTerminalSite[flightId]];

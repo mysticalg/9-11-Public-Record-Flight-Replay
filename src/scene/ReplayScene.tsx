@@ -572,15 +572,15 @@ function createSatelliteOverlay(maxAnisotropy: number) {
           transparent: false,
           opacity: 1,
           polygonOffset: true,
-          polygonOffsetFactor: -12,
-          polygonOffsetUnits: -12,
+          polygonOffsetFactor: satelliteOverlayPolygonOffset(area),
+          polygonOffsetUnits: satelliteOverlayPolygonOffset(area),
           depthTest: true,
-          depthWrite: true,
+          depthWrite: false,
           side: THREE.DoubleSide
         });
-        const mesh = new THREE.Mesh(createSatelliteTileTerrainGeometry(tileBounds), material);
+        const mesh = new THREE.Mesh(createSatelliteTileTerrainGeometry(tileBounds, satelliteOverlayLift(area)), material);
         mesh.name = `${area.name} ${area.purpose} satellite tile ${tileKey}`;
-        mesh.renderOrder = 6;
+        mesh.renderOrder = satelliteOverlayRenderOrder(area);
         mesh.frustumCulled = false;
         group.add(mesh);
 
@@ -737,7 +737,46 @@ function satelliteOverlayAreas(): SatelliteOverlayArea[] {
   return areas;
 }
 
-function createSatelliteTileTerrainGeometry(bounds: { north: number; south: number; west: number; east: number }) {
+function satelliteOverlayLift(area: SatelliteOverlayArea) {
+  if (area.purpose === "site") {
+    return satelliteOverlayY + 0.82;
+  }
+
+  if (area.purpose === "runway") {
+    return satelliteOverlayY + 0.52;
+  }
+
+  return satelliteOverlayY;
+}
+
+function satelliteOverlayRenderOrder(area: SatelliteOverlayArea) {
+  if (area.purpose === "site") {
+    return 8;
+  }
+
+  if (area.purpose === "runway") {
+    return 7;
+  }
+
+  return 5;
+}
+
+function satelliteOverlayPolygonOffset(area: SatelliteOverlayArea) {
+  if (area.purpose === "site") {
+    return -18;
+  }
+
+  if (area.purpose === "runway") {
+    return -15;
+  }
+
+  return -9;
+}
+
+function createSatelliteTileTerrainGeometry(
+  bounds: { north: number; south: number; west: number; east: number },
+  liftMeters: number
+) {
   const subdivisions = 8;
   const vertices: number[] = [];
   const uvs: number[] = [];
@@ -750,7 +789,7 @@ function createSatelliteTileTerrainGeometry(bounds: { north: number; south: numb
       const u = col / subdivisions;
       const lon = bounds.west + (bounds.east - bounds.west) * u;
       const world = geoToWorld(lat, lon);
-      vertices.push(world.x, siteTerrainHeightAt(world.x, world.z) + satelliteOverlayY, world.z);
+      vertices.push(world.x, siteTerrainHeightAt(world.x, world.z) + liftMeters, world.z);
       uvs.push(u, 1 - v);
     }
   }
@@ -2421,6 +2460,15 @@ function createAircraftModel() {
     emissive: 0x121414
   });
   const stripeMaterial = new THREE.MeshBasicMaterial({ color: 0x8d2938 });
+  const accentMaterial = new THREE.MeshBasicMaterial({ color: 0x244b63 });
+  const panelLineMaterial = new THREE.LineBasicMaterial({
+    color: 0x48514f,
+    transparent: true,
+    opacity: 0.72,
+    depthTest: false,
+    depthWrite: false,
+    fog: false
+  });
   const wingMaterial = new THREE.MeshStandardMaterial({
     color: 0xd3d9d7,
     roughness: 0.5,
@@ -2465,6 +2513,10 @@ function createAircraftModel() {
     const stripe = new THREE.Mesh(new THREE.BoxGeometry(length * 0.74, 0.26, 0.12), stripeMaterial);
     stripe.position.set(-1.6, 0.42, side * (fuselageRadius + 0.06));
     group.add(stripe);
+
+    const lowerStripe = new THREE.Mesh(new THREE.BoxGeometry(length * 0.58, 0.12, 0.08), accentMaterial);
+    lowerStripe.position.set(-2.6, -0.02, side * (fuselageRadius + 0.1));
+    group.add(lowerStripe);
   });
 
   const nose = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 18), bodyMaterial);
@@ -2502,6 +2554,17 @@ function createAircraftModel() {
     group.add(mainWing);
     group.add(createWingOutline(mainWingOptions, new THREE.Vector3(-1.4, -0.08, 0), 0x596060));
     group.add(createWingEdgeTubes(mainWingOptions, new THREE.Vector3(-1.4, -0.08, 0), 0x5d6864));
+    group.add(createWingPanelLines(mainWingOptions, new THREE.Vector3(-1.4, 0.18, 0), panelLineMaterial));
+
+    [0.36, 0.56, 0.74].forEach((spanFraction) => {
+      const spanZ = side * (mainWingOptions.rootOffset + (mainWingOptions.semiSpan - mainWingOptions.rootOffset) * spanFraction);
+      const fairing = new THREE.Mesh(new THREE.CapsuleGeometry(0.22, 2.65, 5, 10), wingUndersideMaterial);
+      fairing.position.set(-2.1 - spanFraction * 2.4, -0.86 + spanFraction * 0.24, spanZ);
+      fairing.rotation.z = Math.PI / 2;
+      fairing.rotation.y = side * 0.06;
+      fairing.castShadow = true;
+      group.add(fairing);
+    });
 
     const pylon = new THREE.Mesh(new THREE.BoxGeometry(2.0, 1.25, 0.7), wingUndersideMaterial);
     pylon.position.set(0.2, -1.08, side * 7.55);
@@ -2551,6 +2614,12 @@ function createAircraftModel() {
       window.position.set(14.2 - index * 2.45, 1.12, side * (fuselageRadius + 0.08));
       group.add(window);
     }
+
+    [10.6, 2.8, -9.4, -17.2].forEach((x) => {
+      const door = new THREE.Mesh(new THREE.BoxGeometry(0.42, 1.04, 0.07), darkMaterial);
+      door.position.set(x, 0.62, side * (fuselageRadius + 0.095));
+      group.add(door);
+    });
   }
 
   [-1, 1].forEach((side) => {
@@ -2649,6 +2718,36 @@ function createWingEdgeTubes(options: WingPanelOptions, offset: THREE.Vector3, c
   });
 
   return group;
+}
+
+function createWingPanelLines(options: WingPanelOptions, offset: THREE.Vector3, material: THREE.LineBasicMaterial) {
+  const group = new THREE.Group();
+  const points = wingPanelPoints(options);
+  const topLeadingRoot = points.topRootLeading.clone().add(offset);
+  const topLeadingTip = points.topTipLeading.clone().add(offset);
+  const topTrailingRoot = points.topRootTrailing.clone().add(offset);
+  const topTrailingTip = points.topTipTrailing.clone().add(offset);
+
+  [0.33, 0.62, 0.82].forEach((chordFraction) => {
+    const root = topLeadingRoot.clone().lerp(topTrailingRoot, chordFraction);
+    const tip = topLeadingTip.clone().lerp(topTrailingTip, chordFraction);
+    group.add(createAircraftPanelLine(root, tip, material));
+  });
+
+  [0.38, 0.62, 0.84].forEach((spanFraction) => {
+    const leading = topLeadingRoot.clone().lerp(topLeadingTip, spanFraction);
+    const trailing = topTrailingRoot.clone().lerp(topTrailingTip, spanFraction);
+    group.add(createAircraftPanelLine(leading, trailing, material));
+  });
+
+  group.renderOrder = 66;
+  return group;
+}
+
+function createAircraftPanelLine(start: THREE.Vector3, end: THREE.Vector3, material: THREE.LineBasicMaterial) {
+  const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints([start, end]), material);
+  line.renderOrder = 66;
+  return line;
 }
 
 function createAircraftEdgeTube(start: THREE.Vector3, end: THREE.Vector3, radius: number, color: number) {

@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import osmPentagonFootprint from "../data/osmPentagonFootprint.generated.json";
 import { publicFlightPathDefinitions, type PublicFlightWaypoint } from "../data/publicFlightPaths";
+import { wtcImpactAttitudeDefinitions } from "../data/siteDefinitions";
 import { replayStartClock } from "../data/trajectoryLocked";
 import type { FlightId, ReplayInterpolationMode, ReplayState } from "../types";
 import { approximateWgs84ToLocalEnu } from "./coordinateTransforms";
@@ -135,24 +136,33 @@ function getPublicFlightReplayState(
     const verticalSpeedFpm = (verticalFeet / duration) * 60;
     const confidence = current.waypoint.confidence === "medium" && next.waypoint.confidence === "medium" ? "medium" : "low";
     const pathBearingDeg = headingFromWorldVector(tangent);
-    const pitchDeg = (Math.atan2(tangent.y, horizontalDistanceMeters) * 180) / Math.PI;
+    const pathPitchDeg = (Math.atan2(tangent.y, horizontalDistanceMeters) * 180) / Math.PI;
+    const attitude = publicTerminalAttitudeForFlight(
+      flightId,
+      t,
+      pathBearingDeg,
+      pathPitchDeg,
+      groundSpeedKt,
+      verticalSpeedFpm
+    );
 
     return {
       t,
       position: [position.x, position.y, position.z],
       tangent: normalizedTuple(tangent),
       confidence,
-      sourceRef: `${definition.label}: ${current.waypoint.clock} ${current.waypoint.label} to ${next.waypoint.clock} ${next.waypoint.label}; ${definition.caveat}`,
+      sourceRef: `${definition.label}: ${current.waypoint.clock} ${current.waypoint.label} to ${next.waypoint.clock} ${next.waypoint.label}; ${definition.caveat}${attitude.sourceSuffix}`,
       interpolation: "inferred",
       altitudeFeet: current.waypoint.altitudeFeet + verticalFeet * localT,
       altitudeSource: flightId === "ua93" ? "public_ua93_black_box_kml" : "public_dcc_radar_kml",
-      yawDeg: pathBearingDeg,
-      headingDeg: pathBearingDeg,
+      yawDeg: attitude.headingDeg,
+      headingDeg: attitude.headingDeg,
       trackDeg: pathBearingDeg,
       pathBearingDeg,
-      pitchDeg,
-      rollDeg: null,
-      groundSpeedKt,
+      pitchDeg: attitude.pitchDeg,
+      rollDeg: attitude.rollDeg,
+      visualRollDeg: attitude.rollDeg,
+      groundSpeedKt: attitude.groundSpeedKt,
       computedAirspeedKt: null,
       trueAirspeedKt: null,
       mach: null,
@@ -167,7 +177,7 @@ function getPublicFlightReplayState(
       speedRateKtPerSec: null,
       overspeed: null,
       nav: null,
-      verticalSpeedFpm,
+      verticalSpeedFpm: attitude.verticalSpeedFpm,
       interpolationMode: options.interpolationMode
     };
   }
@@ -196,22 +206,36 @@ function stateFromPublicSample(
     ? neighbor.position.clone().sub(sample.position)
     : sample.position.clone().sub(neighbor.position);
   const bearing = headingFromWorldVector(tangent);
+  const derivedVerticalSpeedFpm = beforeFirst
+    ? 0
+    : ((sample.waypoint.altitudeFeet - neighbor.waypoint.altitudeFeet) /
+        Math.max(Math.abs(sample.replayTime - neighbor.replayTime), 0.001)) *
+      60;
+  const attitude = publicTerminalAttitudeForFlight(
+    flightId,
+    sample.replayTime,
+    bearing,
+    0,
+    beforeFirst ? 0 : null,
+    derivedVerticalSpeedFpm
+  );
   return {
     t,
     position: [sample.position.x, sample.position.y, sample.position.z],
     tangent: normalizedTuple(tangent),
     confidence: sample.waypoint.confidence,
-    sourceRef: `${label}: ${sample.waypoint.clock} ${sample.waypoint.label}; ${sample.waypoint.source}. ${publicFlightPathDefinitions[flightId].caveat}`,
+    sourceRef: `${label}: ${sample.waypoint.clock} ${sample.waypoint.label}; ${sample.waypoint.source}. ${publicFlightPathDefinitions[flightId].caveat}${attitude.sourceSuffix}`,
     interpolation: "documented",
     altitudeFeet: sample.waypoint.altitudeFeet,
     altitudeSource: flightId === "ua93" ? "public_ua93_black_box_kml" : "public_dcc_radar_kml",
-    yawDeg: bearing,
-    headingDeg: bearing,
+    yawDeg: attitude.headingDeg,
+    headingDeg: attitude.headingDeg,
     trackDeg: bearing,
     pathBearingDeg: bearing,
-    pitchDeg: 0,
-    rollDeg: null,
-    groundSpeedKt: beforeFirst ? 0 : null,
+    pitchDeg: attitude.pitchDeg,
+    rollDeg: attitude.rollDeg,
+    visualRollDeg: attitude.rollDeg,
+    groundSpeedKt: beforeFirst ? 0 : attitude.groundSpeedKt,
     computedAirspeedKt: null,
     trueAirspeedKt: null,
     mach: null,
@@ -226,8 +250,56 @@ function stateFromPublicSample(
     speedRateKtPerSec: null,
     overspeed: null,
     nav: null,
-    verticalSpeedFpm: 0,
+    verticalSpeedFpm: attitude.verticalSpeedFpm,
     interpolationMode: options.interpolationMode
+  };
+}
+
+function publicTerminalAttitudeForFlight(
+  flightId: PublicFlightId,
+  replayTime: number,
+  pathBearingDeg: number,
+  pathPitchDeg: number,
+  groundSpeedKt: number | null,
+  verticalSpeedFpm: number | null
+) {
+  const terminal = flightId === "aa11" || flightId === "ua175" ? wtcImpactAttitudeDefinitions[flightId] : null;
+  if (!terminal) {
+    return {
+      headingDeg: normalizeHeadingDeg(pathBearingDeg),
+      pitchDeg: pathPitchDeg,
+      rollDeg: null,
+      groundSpeedKt,
+      verticalSpeedFpm,
+      sourceSuffix: ""
+    };
+  }
+
+  const samples = publicFlightSamples[flightId];
+  const endTime = samples[samples.length - 1].replayTime;
+  const startTime = Math.max(samples[0].replayTime, endTime - terminal.blendLeadSeconds);
+  const blend =
+    replayTime <= startTime
+      ? 0
+      : smoothstep(THREE.MathUtils.clamp((replayTime - startTime) / Math.max(endTime - startTime, 0.001), 0, 1));
+  const sourceImpactPitchDeg = terminal.verticalApproachDeg + terminal.fuselageNoseUpRelativeDeg;
+  const sourceRollDeg = -terminal.leftWingDownRollDeg;
+  const impactSpeedKt = terminal.impactSpeedMph * 0.868976;
+  const impactVerticalSpeedFpm = impactSpeedKt * 101.269 * Math.sin(degToRad(terminal.verticalApproachDeg));
+
+  return {
+    headingDeg: normalizeHeadingDeg(pathBearingDeg + terminal.yawOffsetRelativeToPathDeg * blend),
+    pitchDeg: THREE.MathUtils.lerp(pathPitchDeg, sourceImpactPitchDeg, blend),
+    rollDeg: sourceRollDeg * blend,
+    groundSpeedKt: groundSpeedKt === null ? impactSpeedKt * blend : THREE.MathUtils.lerp(groundSpeedKt, impactSpeedKt, blend),
+    verticalSpeedFpm:
+      verticalSpeedFpm === null
+        ? impactVerticalSpeedFpm * blend
+        : THREE.MathUtils.lerp(verticalSpeedFpm, impactVerticalSpeedFpm, blend),
+    sourceSuffix:
+      blend > 0.001
+        ? ` Terminal attitude is blended toward ${terminal.label}; ${terminal.source}`
+        : ""
   };
 }
 
@@ -393,6 +465,19 @@ function normalizedTuple(vector: THREE.Vector3): [number, number, number] {
 
 function headingFromWorldVector(vector: THREE.Vector3) {
   return ((Math.atan2(vector.x, -vector.z) * 180) / Math.PI + 360) % 360;
+}
+
+function normalizeHeadingDeg(value: number) {
+  return ((value % 360) + 360) % 360;
+}
+
+function smoothstep(value: number) {
+  const t = THREE.MathUtils.clamp(value, 0, 1);
+  return t * t * (3 - 2 * t);
+}
+
+function degToRad(value: number) {
+  return (value * Math.PI) / 180;
 }
 
 function secondsOfDay(clock: string) {
