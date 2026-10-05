@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, persist, type StateStorage } from "zustand/middleware";
-import { sharedTimelineEndReplayOffset, sharedTimelineStartReplayOffset } from "../data/contextTimeline";
+import { replayStartClockSeconds, sharedTimelineEndReplayOffset, sharedTimelineStartReplayOffset } from "../data/contextTimeline";
 import type { SatelliteOverlayMode } from "../data/imagerySources";
 import type { CameraFovOverrides } from "../engine/cameraPresets";
 import { cameraFovRange } from "../engine/cameraPresets";
@@ -174,11 +174,11 @@ function createDebouncedSessionStorage(): StateStorage {
 export const useReplayStore = create<ReplayStore>()(
   persist(
     (set) => ({
-  currentTime: sharedTimelineStartReplayOffset,
+  currentTime: (9 * 3600 + 2 * 60 + 37) - replayStartClockSeconds,
   isPlaying: false,
   speed: 0.5,
-  activeFlightId: "aa11",
-  cameraMode: "wide_aerial",
+  activeFlightId: "ua175",
+  cameraMode: "chase_locked",
   cameraFovOverrides: {},
   cameraPoseOverrides: {},
   cameraResetRevision: 0,
