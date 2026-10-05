@@ -189,7 +189,7 @@ export const useReplayStore = create<ReplayStore>()(
   showSourceMarkers: true,
   showUncertainty: true,
   showSiteContext: true,
-  showSatelliteOverlay: false,
+  showSatelliteOverlay: true,
   satelliteOverlayMode: "modern",
   showCameraFrustums: true,
   showOriginalSecurityFrames: true,
