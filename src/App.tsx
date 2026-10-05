@@ -67,11 +67,15 @@ export function App() {
     <main className="app-shell">
       <header className="topbar">
         <div>
-          <p className="topbar-label">Passive historical replay viewer</p>
+          <p className="topbar-label">Public records · September 11, 2001</p>
           <h1>9/11 Public Record Flight Replay</h1>
+          <p className="topbar-summary">Explore four flights through source-attributed paths, a shared timeline, and historical context.</p>
+          <div className="archive-tags" aria-label="Flights covered"><span>AA11</span><span>UA175</span><span>AA77</span><span>UA93</span></div>
         </div>
         <div className="ethics-banner">
-          Non-operational visualization. No flight controls, waypoint editing, targeting, scoring, or damage model.
+          <strong>A record to explore.</strong>
+          <span>Historical visualization with sources and uncertainty shown throughout.</span>
+          <small>Header artwork is AI-generated and decorative.</small>
         </div>
       </header>
 

@@ -1,6 +1,6 @@
 # 9/11 Public Record Flight Replay
 
-Live GitHub Pages build: https://mysticalg.github.io/Pentaboom/
+Live GitHub Pages build: https://mysticalg.github.io/9-11-Public-Record-Flight-Replay/
 
 A non-operational historical visualization of public-record flight paths and terminal-site context for AA11, UA175, AA77, and UA93.
 
